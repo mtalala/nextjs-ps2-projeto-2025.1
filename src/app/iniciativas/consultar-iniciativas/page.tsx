@@ -131,19 +131,35 @@ export default function ConsultarIniciativas() {
       </div>
 
       {data.length > 0 ? (
-        <Table
-          columns={columns}
-          data={data.map((i) => ({
-            id: i.id,
-            titulo: i.titulo,
-            desc: i.desc,
-            porcentagemConcIndividual: i.porcentagemConcIndividual + '%',
-            // removido krDescricao
-          }))}
-        />
+        <>
+          <div className={styles.cardContainer}>
+            {data.map((ini) => (
+              <div key={ini.id} className={styles.iniciativaCard}>
+                <h2 className={styles.infoTitulo}>Iniciativa:</h2>
+                <h3 className={styles.iniciativaTitulo}>Título: {ini.titulo}</h3>
+                <p className={styles.iniciativaDesc}>Descrição: {ini.desc}</p>
+                <p className={styles.porcentagem}>
+                  Conclusão: {ini.porcentagemConcIndividual}%
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <h1>Tabela</h1>
+          <Table
+            columns={columns}
+            data={data.map((i) => ({
+              id: i.id,
+              titulo: i.titulo,
+              desc: i.desc,
+              porcentagemConcIndividual: i.porcentagemConcIndividual + '%',
+            }))}
+          />
+        </>
       ) : (
         <p>Nenhuma iniciativa encontrada.</p>
       )}
+
     </div>
   );
 }

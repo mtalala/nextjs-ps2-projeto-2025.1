@@ -56,6 +56,75 @@
   background-color: #005ac1;
 }
 
+/* cards */
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.porcentagem {
+  font-size: 0.875rem;
+  color: #323232;
+  margin-top: 0.25rem;
+}
+
+.infoTitulo {
+  font-size: 0.875rem;
+  color: #848484;
+  margin-top: 0.25rem;
+}
+
+.iniciativasContainer {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.iniciativaCard {
+  min-width: 200px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 0.75rem;
+  flex-shrink: 0;
+}
+
+.iniciativaTitulo {
+  font-weight: 600;
+  color: #222222;
+  font-size: 0.95rem;
+}
+
+
+/* Dark mode - cards */
+
+[data-theme="dark"] .cardContainer {
+  /* nada necessário aqui a menos que o fundo geral precise mudar */
+}
+
+[data-theme="dark"] .porcentagem {
+  color: #cbcbcb;
+}
+
+[data-theme="dark"] .infoTitulo {
+  color: #898989;
+}
+
+[data-theme="dark"] .iniciativaCard {
+  background-color:  rgb(32, 35, 48);
+}
+
+[data-theme="dark"] .iniciativaTitulo {
+  color: #eeeeee;
+}
+
+
+
+
 /* Dark mode */
 [data-theme="dark"] .searchBar select,
 [data-theme="dark"] .searchBar input {

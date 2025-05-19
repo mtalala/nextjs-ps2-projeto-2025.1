@@ -46,6 +46,22 @@ export default function ConsultarObjetivos() {
       })
       .catch(console.error);
   };
+// cards
+  const [expandedKrIds, setExpandedKrIds] = useState<Set<number>>(new Set());
+
+  const toggleExpanded = (krId: number) => {
+    setExpandedKrIds((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(krId)) {
+        newSet.delete(krId);
+      } else {
+        newSet.add(krId);
+      }
+      return newSet;
+    });
+  };
+
+// useeffect
 
   useEffect(() => {
     fetchAllObjetivos();
@@ -156,6 +172,54 @@ export default function ConsultarObjetivos() {
           Buscar
         </button>
       </div>
+
+      <div className={styles.cardContainer}>
+        {data.map((obj) => (
+          <div key={obj.id} className={styles.objetivoCard}>
+            <h2 className={styles.infoTitulo}>Objetivo:</h2>
+            <h2 className={styles.objetivoTitulo}>{obj.titulo}</h2>
+            <p className={styles.objetivoDesc}>Descrição: {obj.desc}</p>
+            <p className={styles.porcentagem}>Conclusão: {obj.porcentagemConcGeral}%</p>
+
+            {obj.krs.map((kr) => {
+              const isExpanded = expandedKrIds.has(kr.id!);
+              return (
+                <div key={kr.id} className={styles.krCard}>
+                  <div className={styles.krHeader}>
+                    <div>
+                      <h3 className={styles.infoTitulo}>Resultado-Chave:</h3>
+                      <h3 className={styles.krTitulo}>Descrição: {kr.desc}</h3>
+                      <p className={styles.porcentagem}>Conclusão: {kr.porcentagemConc}%</p>
+                    </div>
+                    <button
+                      className={styles.expandButton}
+                      onClick={() => toggleExpanded(kr.id!)}
+                    >
+                      {isExpanded ? 'Recolher' : 'Expandir'}
+                    </button>
+                  </div>
+
+                  {isExpanded && (
+                    <div className={styles.iniciativasContainer}>
+                      {(kr.iniciativas ?? []).map((ini) => (
+                        <div key={ini.id} className={styles.iniciativaCard}>
+                          <h4 className={styles.infoTitulo}>Iniciativa:</h4>
+                          <h4 className={styles.iniciativaTitulo}>Descrição: {ini.desc}</h4>
+                          <p className={styles.porcentagem}>
+                            Conclusão: {ini.porcentagemConcIndividual}%
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+
+       <h1>Tabela</h1>
 
       {data.length > 0 ? (
         <Table

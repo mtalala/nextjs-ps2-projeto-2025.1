@@ -59,6 +59,232 @@
   background-color: #005ac1;
 }
 
+/* cards */
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.objetivoCard {
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  width: 500pt;
+}
+
+.objetivoTitulo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333333;
+}
+
+.objetivoDesc {
+  color: #666666;
+  margin-top: 0.25rem;
+}
+
+.porcentagem, .infoTitulo {
+  font-size: 0.875rem;
+  color: #888888;
+  margin-top: 0.25rem;
+}
+
+.krCard {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.krHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.krTitulo {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #444444;
+}
+
+.expandButton {
+  background: none;
+  border: none;
+  color: #1e90ff;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  margin: 5px;
+}
+
+.iniciativasContainer {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.iniciativaCard {
+  min-width: 200px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 0.75rem;
+  flex-shrink: 0;
+}
+
+.iniciativaTitulo {
+  font-weight: 600;
+  color: #222222;
+  font-size: 0.95rem;
+}
+
+/* cards */
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.objetivoCard {
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  width: 500pt;
+}
+
+.objetivoTitulo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333333;
+}
+
+.objetivoDesc {
+  font-weight: 600;
+  color: #222222;
+  font-size: 0.95rem;
+}
+
+.porcentagem {
+  font-size: 0.875rem;
+  color: #323232;
+  margin-top: 0.25rem;
+}
+
+.infoTitulo {
+  font-size: 0.875rem;
+  color: #848484;
+  margin-top: 0.25rem;
+}
+
+.krCard {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.krHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.krTitulo {
+  font-weight: 600;
+  color: #222222;
+  font-size: 0.95rem;
+}
+
+.expandButton {
+  background: none;
+  border: none;
+  color: #1e90ff;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  margin: 5px;
+}
+
+.iniciativasContainer {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.iniciativaCard {
+  min-width: 200px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 0.75rem;
+  flex-shrink: 0;
+}
+
+.iniciativaTitulo {
+  font-weight: 600;
+  color: #222222;
+  font-size: 0.95rem;
+}
+
+
+/* Dark mode - cards */
+
+[data-theme="dark"] .cardContainer {
+  /* nada necessário aqui a menos que o fundo geral precise mudar */
+}
+
+[data-theme="dark"] .objetivoCard {
+  background-color: rgb(32, 35, 48);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .objetivoTitulo {
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] .objetivoDesc {
+  color: #eeeeee;
+}
+
+[data-theme="dark"] .porcentagem {
+  color: #cbcbcb;
+}
+
+[data-theme="dark"] .infoTitulo {
+  color: #7d7d7d;
+}
+
+[data-theme="dark"] .krCard {
+  background-color: rgb(45, 49, 67);
+}
+
+[data-theme="dark"] .krTitulo {
+  color: #eeeeee;
+}
+
+[data-theme="dark"] .expandButton {
+  color: #3391ff;
+}
+
+[data-theme="dark"] .iniciativaCard {
+  background-color: rgb(32, 35, 48);
+  box-shadow: 0 1px 4px rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .iniciativaTitulo {
+  color: #eeeeee;
+}
+
+
+
 /* Dark mode */
 
 [data-theme="dark"] .searchBar select,

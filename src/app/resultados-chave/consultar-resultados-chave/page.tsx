@@ -114,34 +114,61 @@ export default function ConsultarResultadosChave() {
       </div>
 
       {loading ? (
-        <p>Carregando...</p>
+      <p>Carregando...</p>
       ) : data.length > 0 ? (
-        <Table
-          columns={resultadoColumns}
-          data={data.map((r) => ({
-            id: r.id,
-            desc: r.desc,
-            meta: r.meta,
-            porcentagemConc: `${r.porcentagemConc}%`,
-            iniciativas: (
-              <Table
-                columns={[
-                  { header: 'ID', accessor: 'id' },
-                  { header: 'Título', accessor: 'titulo' },
-                  { header: 'Descrição', accessor: 'desc' },
-                ]}
-                data={r.iniciativas.map((i) => ({
-                  id: i.id,
-                  titulo: i.titulo,
-                  desc: i.desc ?? '(sem descrição)',
-                }))}
-              />
-            ),
-          }))}
-        />
+        <>
+          <div className={styles.cardContainer}>
+            {data.map((kr) => (
+              <div key={kr.id} className={styles.krCard}>
+                <h2 className={styles.infoTitulo}>Resultado-Chave:</h2>
+                <h2 className={styles.krTitulo}>Descrição: {kr.desc}</h2>
+                <p className={styles.porcentagem}>Meta: {kr.meta}</p>
+                <p className={styles.porcentagem}>Conclusão: {kr.porcentagemConc}%</p>
+
+                <div className={styles.iniciativasContainer}>
+                  {kr.iniciativas.map((ini) => (
+                    <div key={ini.id} className={styles.iniciativaCard}>
+                      <h4 className={styles.infoTitulo}>Iniciativa:</h4>
+                      <h4 className={styles.iniciativaTitulo}>{ini.titulo}</h4>
+                      <p className={styles.porcentagem}>
+                        Descrição: {ini.desc ?? '(sem descrição)'}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h1>Tabela</h1>
+          <Table
+            columns={resultadoColumns}
+            data={data.map((r) => ({
+              id: r.id,
+              desc: r.desc,
+              meta: r.meta,
+              porcentagemConc: `${r.porcentagemConc}%`,
+              iniciativas: (
+                <Table
+                  columns={[
+                    { header: 'ID', accessor: 'id' },
+                    { header: 'Título', accessor: 'titulo' },
+                    { header: 'Descrição', accessor: 'desc' },
+                  ]}
+                  data={r.iniciativas.map((i) => ({
+                    id: i.id,
+                    titulo: i.titulo,
+                    desc: i.desc ?? '(sem descrição)',
+                  }))}
+                />
+              ),
+            }))}
+          />
+        </>
       ) : (
         <p>Nenhum resultado-chave encontrado.</p>
       )}
+
     </div>
   );
 }
