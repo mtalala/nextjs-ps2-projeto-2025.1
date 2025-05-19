@@ -1,0 +1,117 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* ---------- MODO CLARO (padrão) ---------- */
+
+.objetivoCard {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Mantém sombra leve */
+}
+
+.objetivoCard h2 {
+  margin: 0 0 0.5rem;
+}
+
+.objetivoCard h3 {
+  margin-top: 1.2rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+.krItem {
+  margin: 0.5rem 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.form input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc; /* Adiciona borda para manter estrutura entre temas */
+  background-color: #fff;
+  color: #000;
+}
+
+.addKrButton {
+  margin-top: 0.5rem;
+  background-color: #e0e0e0;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  color: #000;
+}
+
+.addKrButton:hover {
+  background-color: #d0d0d0;
+}
+
+.submitButton {
+  margin-top: 1rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+/* Sombra e cor de botão consistentes entre temas */
+.submitButton:hover {
+  background-color: #005ac1;
+}
+
+/* ---------- MODO ESCURO ---------- */
+
+[data-theme="dark"] .objetivoCard {
+  background: #1e1e1e;
+  border: 1px solid #444;
+  padding: 1.5rem; /* Reforça valor igual */
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .objetivoCard h3 {
+  color: #ccc;
+}
+
+[data-theme="dark"] .form input {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+[data-theme="dark"] .addKrButton {
+  background-color: #333;
+  color: #eee;
+}
+
+[data-theme="dark"] .addKrButton:hover {
+  background-color: #444;
+}
+
+[data-theme="dark"] .submitButton {
+  background-color: #3391ff;
+  color: white;
+}
+
+[data-theme="dark"] .submitButton:hover {
+  background-color: #1a73e8;
+}

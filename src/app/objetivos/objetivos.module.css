@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.link {
+  background-color: #0070f3;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.link:hover {
+  background-color: #005ac1;
+}
+
+/* Modo escuro */
+[data-theme="dark"] .link {
+  background-color: #3391ff;
+  color: white;
+}
+
+[data-theme="dark"] .link:hover {
+  background-color: #1a73e8;
+}

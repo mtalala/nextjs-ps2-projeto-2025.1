@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* Container principal já existe */
+
+.searchBar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 800px;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchBar select,
+.searchBar input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc; /* igual ao input do form */
+  border-radius: 6px;
+  background-color: #fff;
+  color: #000;
+  transition: border-color 0.3s ease;
+}
+
+.searchBar select {
+  width: 180px;
+}
+
+.searchBar input {
+  flex: 1;
+}
+
+.searchBar select:focus,
+.searchBar input:focus {
+  outline: none;
+  border-color: #0070f3;
+  box-shadow: 0 0 5px rgba(0, 112, 243, 0.5);
+}
+
+.searchBar button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  background-color: #0070f3;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.searchBar button:hover {
+  background-color: #005ac1;
+}
+
+/* Dark mode */
+
+[data-theme="dark"] .searchBar select,
+[data-theme="dark"] .searchBar input {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+[data-theme="dark"] .searchBar select:focus,
+[data-theme="dark"] .searchBar input:focus {
+  border-color: #3391ff;
+  box-shadow: 0 0 5px rgba(51, 145, 255, 0.7);
+}
+
+[data-theme="dark"] .searchBar button {
+  background-color: #3391ff;
+  color: white;
+}
+
+[data-theme="dark"] .searchBar button:hover {
+  background-color: #1a73e8;
+}

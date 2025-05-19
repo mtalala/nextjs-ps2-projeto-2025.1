@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table {
+  width: 400pt;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  margin-bottom: 20pt;
+}
+
+.th {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.light {
+  background-color: #f9f9f9;
+}
+
+.dark {
+  background-color: #e0e0e0;
+}
+
+[data-theme="dark"] .light {
+  background-color:  rgb(45, 49, 67);
+}
+
+[data-theme="dark"] .dark {
+  background-color: rgb(32, 35, 48);
+}
+
+[data-theme="dark"] .th,
+[data-theme="dark"] .td {
+  color: #f0f0f0;
+  border-color: rgb(105, 110, 127);
+}
+
+[data-theme="dark"] .table {
+  background-color: rgb(32, 35, 48);
+}

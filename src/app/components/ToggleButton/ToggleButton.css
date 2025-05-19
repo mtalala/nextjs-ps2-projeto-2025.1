@@ -1,0 +1,68 @@
+:root {
+    /* Light Mode */
+    --button-text: #f0f0f0;
+    --seat-available: #bababa;
+    --toggle-color: #0070f3;
+  }
+  
+  /* Dark Mode */
+  [data-theme="dark"] {
+    --seat-available: #f0f0f0;
+    --toggle-color: #3391ff;
+  }
+  
+
+/* -------------------- */
+/* Botão de alternância de tema */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    padding: 5px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    background: var(--toggle-color);
+  }
+  
+  .theme-toggle-ball {
+    width: 30px;
+    height: 30px;
+    background-color: var(--button-text);
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    transform: translateX(0);
+  }
+  
+  /* Dark Mode */
+  [data-theme="dark"] .theme-toggle {
+    background-color: var(--seat-available);
+  }
+  
+  [data-theme="dark"] .theme-toggle-ball {
+    background: var(--toggle-color);
+    transform: translateX(40px);
+  }
+  
+  /* -------------------- */
+  /* Responsividade */
+  @media (max-height: 600px) {
+    .theme-toggle {
+      bottom: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .theme-toggle {
+      bottom: 10px;
+      right: 10px;
+    }
+  }
+  
