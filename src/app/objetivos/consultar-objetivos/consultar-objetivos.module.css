@@ -5,9 +5,6 @@
     flex-direction: column;
 }
 
-
-/* Container principal já existe */
-
 .searchBar {
   display: flex;
   gap: 1rem;
@@ -22,7 +19,6 @@
 .searchBar input {
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #ccc; /* igual ao input do form */
   border-radius: 6px;
   background-color: #fff;
   color: #000;
@@ -41,7 +37,6 @@
 .searchBar input:focus {
   outline: none;
   border-color: #0070f3;
-  box-shadow: 0 0 5px rgba(0, 112, 243, 0.5);
 }
 
 .searchBar button {
@@ -237,13 +232,8 @@
 
 /* Dark mode - cards */
 
-[data-theme="dark"] .cardContainer {
-  /* nada necessário aqui a menos que o fundo geral precise mudar */
-}
-
 [data-theme="dark"] .objetivoCard {
   background-color: rgb(32, 35, 48);
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
 }
 
 [data-theme="dark"] .objetivoTitulo {
@@ -276,7 +266,6 @@
 
 [data-theme="dark"] .iniciativaCard {
   background-color: rgb(32, 35, 48);
-  box-shadow: 0 1px 4px rgba(255, 255, 255, 0.05);
 }
 
 [data-theme="dark"] .iniciativaTitulo {
@@ -291,13 +280,11 @@
 [data-theme="dark"] .searchBar input {
   background-color: #2c2c2c;
   color: #f0f0f0;
-  border: 1px solid #555;
 }
 
 [data-theme="dark"] .searchBar select:focus,
 [data-theme="dark"] .searchBar input:focus {
   border-color: #3391ff;
-  box-shadow: 0 0 5px rgba(51, 145, 255, 0.7);
 }
 
 [data-theme="dark"] .searchBar button {

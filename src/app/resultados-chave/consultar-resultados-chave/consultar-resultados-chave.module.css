@@ -19,7 +19,6 @@
 .textInput {
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
   border-radius: 6px;
   background-color: #fff;
   color: #000;
@@ -38,7 +37,6 @@
 .textInput:focus {
   outline: none;
   border-color: #0070f3;
-  box-shadow: 0 0 5px rgba(0, 112, 243, 0.5);
 }
 
 .submitButton {
@@ -126,10 +124,6 @@
 
 /* Dark mode - cards */
 
-[data-theme="dark"] .cardContainer {
-  /* nada necessário aqui a menos que o fundo geral precise mudar */
-}
-
 [data-theme="dark"] .porcentagem {
   color: #cbcbcb;
 }
@@ -162,13 +156,11 @@
 [data-theme="dark"] .textInput {
   background-color: #2c2c2c;
   color: #f0f0f0;
-  border: 1px solid #555;
 }
 
 [data-theme="dark"] .selectInput:focus,
 [data-theme="dark"] .textInput:focus {
   border-color: #3391ff;
-  box-shadow: 0 0 5px rgba(51, 145, 255, 0.7);
 }
 
 [data-theme="dark"] .submitButton {
