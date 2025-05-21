@@ -6,7 +6,7 @@
   }
   
   /* Dark Mode */
-  [data-theme="dark"] {
+  [data-theme="dark"] :root {
     --seat-available: #f0f0f0;
     --toggle-color: #e37741;
   }
