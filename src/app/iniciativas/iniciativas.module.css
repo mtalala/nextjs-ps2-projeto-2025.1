@@ -11,8 +11,8 @@
 }
 
 .menuButton {
-  padding: 0.8rem 1.2rem;
-  background-color: #0070f3;
+  padding: 10pt 20pt;
+  background-color: #e2732e;
   color: white;
   border-radius: 8px;
   text-decoration: none;
@@ -20,5 +20,13 @@
 }
 
 .menuButton:hover {
-  background-color: #005ac1;
+  background-color:   #e88243;
+}
+
+[data-theme="dark"] .menuButton {
+  background-color: #e37741;
+}
+
+[data-theme="dark"] .menuButton:hover {
+  background-color:#e58051;
 }

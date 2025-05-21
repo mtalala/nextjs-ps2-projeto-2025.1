@@ -154,7 +154,7 @@
 
 [data-theme="dark"] .selectInput,
 [data-theme="dark"] .textInput {
-  background-color: #2c2c2c;
+  background-color:  rgb(45, 49, 67);
   color: #f0f0f0;
 }
 
