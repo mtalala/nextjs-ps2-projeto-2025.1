@@ -99,21 +99,21 @@
 /* ---------- MODO ESCURO ---------- */
 
 [data-theme="dark"] .collapsible {
-  background-color: #333;
+  background-color:  rgb(45, 49, 67);
   color: #eee;
 }
 
 [data-theme="dark"] .collapsible:hover {
-  background-color: #444;
+  background-color: rgb(54, 59, 80);
 }
 
 [data-theme="dark"] .content {
-  background-color: #1e1e1e;
+  background-color:  rgb(32, 35, 48);
 }
 
 [data-theme="dark"] .inputBox input,
 [data-theme="dark"] .inputBox select {
-  background-color: #2c2c2c;
+  background-color:  rgb(45, 49, 67);
   color: #f0f0f0;
 }
 
