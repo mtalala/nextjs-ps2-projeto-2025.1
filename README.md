@@ -187,7 +187,7 @@ A componentização é utilizada para evitar a repetição de trechos de código
 
 A Sidebar é composta pelos arquivos `Sidebar.tsx` e `Sidebar.module.css`. No arquivo `.tsx` estão presentes o botão hamburguer, para expandi-la, o `<nav>` que possui uma lista de tags `<Link>` importada do 'next/link', os quais são responsáveis por redirecionar para outras páginas. Já no arquivo `.module.css` estão as classes de estilização dos elementos presentes no arquivo `.tsx`.
 
-    * código da estrutura: 
+* código da estrutura: 
 
 ``` tsx
 <nav className={`${styles['nav-menu']} ${isOpen ? styles.open : ""}`} >
@@ -209,7 +209,8 @@ A Sidebar é composta pelos arquivos `Sidebar.tsx` e `Sidebar.module.css`. No ar
       </nav>
 ```
 
-    * código da estilização: 
+ * código da estilização: 
+
 ```css
 .nav-menu {
   position: fixed;
@@ -225,7 +226,7 @@ A Sidebar é composta pelos arquivos `Sidebar.tsx` e `Sidebar.module.css`. No ar
 }
 ```
 
-    * visualização: 
+* visualização: 
 
     ![alt text](image.png)
 
@@ -240,8 +241,7 @@ A tabela recebe duas props que definirão os dados e as colunas da tabela criada
 
 Já no arquivo `.module.css` estão as classes de estilização dos elementos presentes no arquivo `.tsx`. A tabela possui uma lógica que aplica estilos alternados (`.light`/`.dark`) entre os campos da tabela. 
 
-
-    * visualização: 
+* visualização: 
     ![alt text](image-1.png)
 
      
