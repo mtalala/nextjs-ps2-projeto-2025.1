@@ -2,13 +2,13 @@
     /* Light Mode */
     --button-text: #f0f0f0;
     --seat-available: #bababa;
-    --toggle-color: #0070f3;
+    --toggle-color: #e2732e;
   }
   
   /* Dark Mode */
-  [data-theme="dark"] {
+  [data-theme="dark"] :root {
     --seat-available: #f0f0f0;
-    --toggle-color: #3391ff;
+    --toggle-color: #e37741;
   }
   
 
@@ -27,7 +27,6 @@
     cursor: pointer;
     padding: 5px;
     transition: background-color 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 10;
     background: var(--toggle-color);
   }
