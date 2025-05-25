@@ -492,18 +492,48 @@ const [desc, setDesc] = useState('');
 
 </div>
 
-<div id='iniciativas'>
-
-## Iniciativas
-//trechos de código consultar, atualizar, criar + css
-
-</div>
 <div id='kr'>
 
 ## Resultados-Chave
-//trechos de código consultar, atualizar, criar + css
+
+* visualização:
+
+![image](https://github.com/user-attachments/assets/584608b3-e8ba-4789-9332-e31030db02ef)
+
+* visualização:
+
+![image](https://github.com/user-attachments/assets/111b25ac-16d8-46d8-8049-77c5dd4f2166)
+
+* visualização:
+
+![image](https://github.com/user-attachments/assets/6c12e78e-6b7a-44c7-8bee-1ca093b18321)
+
+
+
 
 </div>
+
+<div id='iniciativas'>
+
+## Iniciativas
+
+* visualização:
+
+![image](https://github.com/user-attachments/assets/1b2348fa-d3f6-40ca-b9ed-ded50ca1f60f)
+
+
+* visualização:
+
+![image](https://github.com/user-attachments/assets/fa0c1ebb-e9e7-4be3-b490-dfe97ca37677)
+
+
+* visualização:
+
+![image](https://github.com/user-attachments/assets/0d721e72-d298-4649-87af-ff37acd905f5)
+
+
+</div>
+
 <div id='global'>
 
 ## CSS Global e Layout
