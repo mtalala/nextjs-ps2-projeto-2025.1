@@ -185,68 +185,37 @@ A componentização é utilizada para evitar a repetição de trechos de código
 
 * ### Sidebar:
 
-A Sidebar é composta pelos arquivos `Sidebar.tsx` e `Sidebar.module.css`. No arquivo `.tsx` estão presentes o botão hamburguer, para expandi-la, o `<nav>` que possui uma lista de tags `<Link>` importada do 'next/link', os quais são responsáveis por redirecionar para outras páginas. Já no arquivo `.module.css` estão as classes de estilização dos elementos presentes no arquivo `.tsx`.
+   - Menu lateral responsivo que pode ser expandido/recolhido
+   - Navegação entre as seções principais (Objetivos, Resultados-Chave, Iniciativas)
+   - Estilização com CSS Modules para isolamento de estilos
+     
+   A Sidebar é composta pelos arquivos `Sidebar.tsx` e `Sidebar.module.css`. No arquivo `.tsx` estão presentes o botão hamburguer, para expandi-la, o `<nav>` que possui uma lista de tags `<Link>` importada do 'next/link', os quais são responsáveis por redirecionar para outras páginas. Já no arquivo `.module.css` estão as classes de estilização dos elementos presentes no arquivo `.tsx`.
 
-* código da estrutura: 
-
-``` tsx
-<nav className={`${styles['nav-menu']} ${isOpen ? styles.open : ""}`} >
-        <button className={styles['nav-button']} onClick={() => setIsOpen(false)}> × </button>
-        <ul className={styles['nav-list']}>
-          <Link href="/">
-            <li className={styles['nav-item']}>Home</li>
-          </Link>
-          <Link href="/objetivos">
-            <li className={styles['nav-item']}>Objetivos</li>
-          </Link>
-          <Link href="/resultados-chave">
-            <li className={styles['nav-item']}>Resultados-Chave</li>
-          </Link>
-          <Link href="/iniciativas">
-            <li className={styles['nav-item']}>Iniciativas</li>
-          </Link>
-        </ul>
-      </nav>
-```
-
- * código da estilização: 
-
-```css
-.nav-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  max-width: 100%;
-  width: 100%;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 40;
-  background: inherit;
-}
-```
-
-* visualização: 
+   - visualização: 
 
     ![alt text](image.png)
 
 
-
 * ### Table: 
 
-A Table é composta pelos arquivos `Table.tsx` e `Table.module.css`. No arquivo `.tsx` estão presentes as tags `<table>`, `<thead>` e `<tbody>` que possui as tags `<tr>` dentro, os quais são responsáveis pelas linhas e colunas de uma tabela. 
+   - Componente reutilizável para exibição tabular de dados
+   - Suporta aninhamento para mostrar relações hierárquicas (Objetivos → KRs → Iniciativas)
+   - Estilização alternada de linhas para melhor legibilidade
+   - Estilos alternados (`.light`/`.dark`) entre os campos da tabela. 
+     
+   A Table é composta pelos arquivos `Table.tsx` e `Table.module.css`. No arquivo `.tsx` estão presentes as tags `<table>`, `<thead>` e `<tbody>` que possui as tags `<tr>` dentro, os quais são responsáveis pelas linhas e colunas de uma tabela. 
 
-A tabela recebe duas props que definirão os dados e as colunas da tabela criada, se adaptando dinamicamente ao contexto de ojetivos, resultados-chaves e iniciativas, os quais possuem diferentes quantidades de atributos, o que altera a quantidade de linhas e colunas das tabelas.
+   A tabela recebe duas props que definirão os dados e as colunas da tabela criada, se adaptando dinamicamente ao contexto de ojetivos, resultados-chaves e iniciativas, os quais possuem diferentes quantidades de atributos, o que altera a quantidade de linhas e colunas das tabelas.
 
 
-Já no arquivo `.module.css` estão as classes de estilização dos elementos presentes no arquivo `.tsx`. A tabela possui uma lógica que aplica estilos alternados (`.light`/`.dark`) entre os campos da tabela. 
-
-* visualização: 
+   - visualização: 
     ![alt text](image-1.png)
 
-     
 
 * ### ToggleButton
+
+   - Componente para alternar estados (usado para expandir/recolher seções)
+   - Integrado com o sistema de temas (claro/escuro)
 
 </div>
 <div id='obj'>
@@ -254,7 +223,139 @@ Já no arquivo `.module.css` estão as classes de estilização dos elementos pr
 ## Objetivos  
 //trechos de código consultar, atualizar, criar + css
 
+### Páginas de Consulta:
+
+A página ConsultarObjetivos é a interface principal para visualização e busca de objetivos no sistema, apresentando os dados tanto em formato de cards interativos, a fim de uma melhor esperiência de usuário, quanto em tabela hierárquica.
+
+* Barra de pesquisa com filtros por diferentes campos
+  - Filtragem por diferentes campos (título, descrição, porcentagem ou ID)
+   - Validação para evitar pesquisas sem campo selecionado
+   - Botão de busca que aciona a requisição à API
+
+     ```tsx
+         const handleSearch = () => {
+        let url = baseUrl;
+        
+        switch(searchField) {
+          case 'titulo': url += `/titulo/${term}`; break;
+          case 'desc': url += `/desc/${term}`; break;
+          case 'porcentagem': url += `/porcentagem/${term}`; break;
+          case 'id': url += `/${term}`; break;
+        }
+      
+        fetch(url)
+          .then(/* ... */)
+          .then(/*normalização */)
+          .then(setData);
+      };
+     ```
+     
+* Visualização alternativa em tabela hierárquica
+     - utilizacção do componente Table
+  
+* Visualização em cards interativos com:
+   - Seções expansíveis para KRs e Iniciativas
+   - Indicadores visuais de progresso (porcentagens)
+   - Design responsivo que se adapta a diferentes tamanhos de tela
+
+
+   ```tsx
+      <div className={styles.cardContainer}>
+     {data.map((obj) => (
+       <div key={obj.id} className={styles.objetivoCard}>
+         {/* Conteúdo do objetivo */}
+         {obj.krs.map((kr) => (
+           <div key={kr.id} className={styles.krCard}>
+             {/* Conteúdo do KR */}
+             {isExpanded && (
+               <div className={styles.iniciativasContainer}>
+                 {/* Iniciativas expandidas */}
+               </div>
+             )}
+           </div>
+         ))}
+       </div>
+     ))}
+   </div>
+   ```
+
+
+### Páginas de Criação:
+A página CriarObjetivos permite aos usuários cadastrar novos objetivos no sistema através de um formulário simples e intuitivo, com integração direta à API back-end.
+
+* Estados do Componente:
+   - Controla os campos do formulário (título e descrição)
+   - Inicializados como strings vazias 
+
+```
+const [titulo, setTitulo] = useState('');
+const [desc, setDesc] = useState('');
+```
+  
+* Estrutura do Formulário:
+   - Dois campos obrigatórios (título e descrição)
+   - Validação HTML5 (required)
+   - Estilização via CSS Modules
+
+* Link de Navegação 
+   - Redireciona para a página de consulta
+ 
+* Submissão do formulário:
+
+   - código
+
+ ```typescript
+
+        const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+      
+        const novoObjetivo: Objetivo = {
+          id: Date.now(), // ID temporário
+          titulo,
+          desc,
+        };
+      
+        try {
+          const response = await fetch(API_URL + '/objetivos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(novoObjetivo),
+          });
+      
+          if (!response.ok) throw new Error('Erro ao enviar dados');
+      
+          // Reset do formulário
+          setTitulo('');
+          setDesc('');
+      
+          alert('Objetivo criado com sucesso!');
+        } catch (error) {
+          console.error('Erro ao enviar dados:', error);
+          alert('Erro ao criar objetivo');
+        }
+      };
+
+```
+     
+1 - Previne comportamento padrão do formulário
+
+2 - Cria objeto Objetivo com:
+
+   - 2.1 - ID gerado temporariamente (timestamp)
+   
+   - 2.2 - Título e descrição dos estados
+   
+3 - Envia requisição POST para a API
+
+4 - Trata resposta:
+
+   - 4.1 - Sucesso: Limpa formulário e exibe alerta
+   
+   - 4.2 - Erro: Log no console e alerta usuário
+     
+
 </div>
+
 <div id='iniciativas'>
 
 ## Iniciativas
