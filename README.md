@@ -5,83 +5,14 @@
     * [Exemplo do controller no Back-end](#back)
     * [Exemplo da requisição no Front-end](#front)
 * [Components](#components)
-* [Objetivos](#obj)
+* [Pagina de Consulta Exemplo ](#consulta)
+* [Pagina de Criação Exemplo ](#criacao)
+* [Pagina de Atualização Exemplo ](#atualizacao)
 * [Iniciativas](#iniciativas)
 * [Resultados-Chave](#kr)
 * [global.css + layout](#global)
 * [page](#page)
 * [Autoras](#autoras)
-
-
-<div id='integracao'/> 
-
-
-## Integração com back-end 
-Para o back-end aceitar a requisição da API de um front-end, utilizamos o `@CrossOrigin(origins = "*")` nos controllers, porque o navegador tyem uma política de same-origin, que bloqueia automaticamente as requisições entre esses domínios diferentes por motivos de segurança. O `@CrossOrigin` remove essa restrição.
-
- O  `@CrossOrigin(origins = "*")` é uma anotação do Spring Framework Java que permite solicitações entre origens diferentes (cross-origin) a um endpoint específico do nosso back-end. O parâmetro `origins = "*"` permite acesso de qualquer origem.
-
-<div id='back'>
-
-* ### Exemplo do controller no Back-end:
-
-```java
-
-@RestController
-@CrossOrigin(origins = "*")
-@RequestMapping("/objetivos")
-public class ObjetivoController {
-    private final ObjetivoService objetivoService;
-
-    public ObjetivoController(ObjetivoService objetivoService, ObjetivoRepository objetivoRepository) {
-        this.objetivoService = objetivoService;
-    }
-...
-}
-
-```
-</div>
-<div id='front'>
-
-* ### Exemplo da requisição no Front-end:
-
-   ```javascript
-   const fetchAllObjetivos = () => {
-    fetch('https://reimagined-eureka-97qvj654xg4rc9p6v-8080.app.github.dev/objetivos')
-      .then((res) => res.json())
-      .then((res) => {
-        const objetivos = Array.isArray(res) ? res : [res]; // se a resposta n for um array, coloca dentro de um array
-
-        //para cada obj, garante que kr e iniciativa seja um array
-        const normalized = objetivos.map((obj) => ({
-          ...obj,
-          krs: Array.isArray(obj.krs) ? obj.krs.map((kr: any) => ({
-            ...kr,
-            iniciativas: Array.isArray(kr.iniciativas) ? kr.iniciativas : [],
-          })) : [],
-        }));
-        setData(normalized);
-      })
-      .catch(console.error);
-  };
-   ```
-
-   Nesse trecho de código da função `fetchAllObjetivos`, a requisição acontece da seguinte maneira:
-
-   1- `fetch()` faz uma chamada GET para o endpoint `/objetivos` do back-end
-    * Recebe a requisição do front-end
-    * Verifica o cabeçalho `Origin`
-    * Se permitido pelo `@CrossOrigin`, processa e retorna a resposta com cabeçalho adequado
-
-   2- O primeiro`.then()` converte a resposta em JSON
-
-   3- O segundo `.then()` processa os dados recebidos
-
-   4- O `.catch(console.error)` captura e exibe no console qualquer erro que tenha ocorrido durante a requisição
-
- 
-
-</div>
 
 
 <div id='estrutura'>
@@ -178,6 +109,74 @@ public class ObjetivoController {
 
 </div>
 
+<div id='integracao'/> 
+
+## Integração com back-end 
+Para o back-end aceitar a requisição da API de um front-end, utilizamos o `@CrossOrigin(origins = "*")` nos controllers, porque o navegador tyem uma política de same-origin, que bloqueia automaticamente as requisições entre esses domínios diferentes por motivos de segurança. O `@CrossOrigin` remove essa restrição.
+
+ O  `@CrossOrigin(origins = "*")` é uma anotação do Spring Framework Java que permite solicitações entre origens diferentes (cross-origin) a um endpoint específico do nosso back-end. O parâmetro `origins = "*"` permite acesso de qualquer origem.
+
+<div id='back'>
+
+* ### Exemplo do controller no Back-end:
+
+```java
+
+@RestController
+@CrossOrigin(origins = "*")
+@RequestMapping("/objetivos")
+public class ObjetivoController {
+    private final ObjetivoService objetivoService;
+
+    public ObjetivoController(ObjetivoService objetivoService, ObjetivoRepository objetivoRepository) {
+        this.objetivoService = objetivoService;
+    }
+...
+}
+
+```
+</div>
+<div id='front'>
+
+* ### Exemplo da requisição no Front-end:
+
+   ```javascript
+   const fetchAllObjetivos = () => {
+    fetch('https://reimagined-eureka-97qvj654xg4rc9p6v-8080.app.github.dev/objetivos')
+      .then((res) => res.json())
+      .then((res) => {
+        const objetivos = Array.isArray(res) ? res : [res]; // se a resposta n for um array, coloca dentro de um array
+
+        //para cada obj, garante que kr e iniciativa seja um array
+        const normalized = objetivos.map((obj) => ({
+          ...obj,
+          krs: Array.isArray(obj.krs) ? obj.krs.map((kr: any) => ({
+            ...kr,
+            iniciativas: Array.isArray(kr.iniciativas) ? kr.iniciativas : [],
+          })) : [],
+        }));
+        setData(normalized);
+      })
+      .catch(console.error);
+  };
+   ```
+
+   Nesse trecho de código da função `fetchAllObjetivos`, a requisição acontece da seguinte maneira:
+
+   1- `fetch()` faz uma chamada GET para o endpoint `/objetivos` do back-end
+    * Recebe a requisição do front-end
+    * Verifica o cabeçalho `Origin`
+    * Se permitido pelo `@CrossOrigin`, processa e retorna a resposta com cabeçalho adequado
+
+   2- O primeiro`.then()` converte a resposta em JSON
+
+   3- O segundo `.then()` processa os dados recebidos
+
+   4- O `.catch(console.error)` captura e exibe no console qualquer erro que tenha ocorrido durante a requisição
+
+</div>
+
+
 <div id='components'>
 
 ## Components
@@ -218,12 +217,9 @@ A componentização é utilizada para evitar a repetição de trechos de código
    - Integrado com o sistema de temas (claro/escuro)
 
 </div>
-<div id='obj'>
+<div id='consulta'>
 
-## Objetivos  
-//trechos de código consultar, atualizar, criar + css
-
-### Páginas de Consulta:
+## Páginas de Consulta:
 
 A página ConsultarObjetivos é a interface principal para visualização e busca de objetivos no sistema, apresentando os dados tanto em formato de cards interativos, a fim de uma melhor esperiência de usuário, quanto em tabela hierárquica.
 
@@ -278,9 +274,11 @@ A página ConsultarObjetivos é a interface principal para visualização e busc
      ))}
    </div>
    ```
+</div>
 
+<div id='criacao'>
 
-### Páginas de Criação:
+## Páginas de Criação:
 A página CriarObjetivos permite aos usuários cadastrar novos objetivos no sistema através de um formulário simples e intuitivo, com integração direta à API back-end.
 
 * Estados do Componente:
@@ -353,6 +351,134 @@ const [desc, setDesc] = useState('');
    
    - 4.2 - Erro: Log no console e alerta usuário
      
+</div>
+
+<div id ='atualizacao'>
+
+### Páginas de Atualização:
+
+   A página AtualizarObjetivos permite a edição e exclusão de objetivos existentes no sistema, com seções colapsáveis para cada operação e integração completa com a API back-end.
+
+* Estados do Componente
+  
+   ```typescript
+      // Estados para deleção
+      const [idToDelete, setIdToDelete] = useState<string>('');
+      const [deleteMsg, setDeleteMsg] = useState<string>('');
+
+      // Estados para dados
+      const [objetivos, setObjetivos] = useState<Objetivo[]>([]);
+      const [selectedId, setSelectedId] = useState<number | null>(null);
+      
+      // Estados para formulário
+      const [titulo, setTitulo] = useState('');
+      const [desc, setDesc] = useState('');
+      
+      // Estados para UI
+      const [showDelete, setShowDelete] = useState(false);
+      const [showUpdate, setShowUpdate] = useState(false);
+
+   ```
+* Seção de Exclusão
+  A seção de exclusão remove permanentemente objetivos com um fluxo seguro:
+
+   1- Seleção do Objetivo:
+      - Dropdown similar ao de atualização
+      - Exige seleção explícita
+
+   2- Confirmação Dupla:
+      - Popup de confirmação nativo do navegador
+      - Prevenção contra exclusões acidentais
+
+   3- Execução:
+      - Requisição DELETE para a API
+      - Atualização automática da lista
+      - Mensagem de status persistente
+
+  ```tsx
+  
+  <button className={styles.collapsible} onClick={() => setShowDelete((prev) => !prev)}>
+     Apagar Objetivo
+   </button>
+   {showDelete && (
+     <div className={styles.content}>
+       {/* Seletor de objetivo */}
+       <button onClick={handleDelete}>Apagar</button>
+     </div>
+   )}
+
+   ```
+  * Fluxo de exclusão de um objetivo
+    
+    ``` typescript
+         const handleDelete = async () => {
+           if (!idToDelete.trim()) return;
+           
+           try {
+             const response = await fetch(`${API_URL}/objetivos/${idToDelete}`, {
+               method: 'DELETE'
+             });
+             // Tratamento da resposta
+           } catch {
+             // Tratamento de erro
+           }
+         };
+    ```
+  
+* Seção de Atualização
+  A seção de atualização permite modificar objetivos existentes através de um fluxo em três etapas:
+
+1- Seleção do Objetivo:
+   - Um dropdown lista todos os objetivos disponíveis (ID + Título)
+   - Ao selecionar, os campos são automaticamente preenchidos com os dados atuais
+
+2- Edição dos Campos:
+   - Formulário com título e descrição editáveis
+   - Validação em tempo real (campos obrigatórios)
+
+3- Confirmação:
+   - Envio via requisição PUT para a API
+   - Atualização da lista após sucesso
+   - Feedback visual (alertas de sucesso/erro)
+
+  ```tsx
+        <button className={styles.collapsible} onClick={() => setShowUpdate((prev) => !prev)}>
+        Atualizar Objetivo
+      </button>
+      {showUpdate && (
+        <div className={styles.content}>
+          {/* Seletor e formulário */}
+          <form onSubmit={handleUpdate}>
+            {/* Campos do formulário */}
+          </form>
+        </div>
+      )} 
+  ```
+
+  * Fluxo de Atualização de um objetivo
+ 
+    ```typescript
+         const handleUpdate = async (e: React.FormEvent) => {
+           e.preventDefault();
+           
+           const updatedObjetivo = {
+             id: selectedId,
+             titulo,
+             desc
+           };
+         
+           try {
+             const response = await fetch(`${API_URL}/objetivos/${selectedId}`, {
+               method: 'PUT',
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify(updatedObjetivo)
+             });
+             // Tratamento da resposta
+           } catch {
+             // Tratamento de erro
+           }
+         };
+    ```
 
 </div>
 
