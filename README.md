@@ -221,6 +221,9 @@ A componentização é utilizada para evitar a repetição de trechos de código
 
 ## Páginas de Consulta:
 
+![image](https://github.com/user-attachments/assets/96425dc6-d1d6-4864-b743-112d127a6934)
+
+
 A página ConsultarObjetivos é a interface principal para visualização e busca de objetivos no sistema, apresentando os dados tanto em formato de cards interativos, a fim de uma melhor esperiência de usuário, quanto em tabela hierárquica.
 
 * Barra de pesquisa com filtros por diferentes campos
@@ -279,6 +282,10 @@ A página ConsultarObjetivos é a interface principal para visualização e busc
 <div id='criacao'>
 
 ## Páginas de Criação:
+
+![image](https://github.com/user-attachments/assets/28ed77e1-1f15-437f-9a43-ede55bcaafba)
+
+
 A página CriarObjetivos permite aos usuários cadastrar novos objetivos no sistema através de um formulário simples e intuitivo, com integração direta à API back-end.
 
 * Estados do Componente:
@@ -356,6 +363,9 @@ const [desc, setDesc] = useState('');
 <div id ='atualizacao'>
 
 ### Páginas de Atualização:
+
+![image](https://github.com/user-attachments/assets/e1d5fbd8-4fe1-4973-8d70-1121b04b9a8f)
+
 
    A página AtualizarObjetivos permite a edição e exclusão de objetivos existentes no sistema, com seções colapsáveis para cada operação e integração completa com a API back-end.
 
@@ -442,7 +452,7 @@ const [desc, setDesc] = useState('');
    - Feedback visual (alertas de sucesso/erro)
 
   ```tsx
-        <button className={styles.collapsible} onClick={() => setShowUpdate((prev) => !prev)}>
+      <button className={styles.collapsible} onClick={() => setShowUpdate((prev) => !prev)}>
         Atualizar Objetivo
       </button>
       {showUpdate && (
@@ -496,13 +506,77 @@ const [desc, setDesc] = useState('');
 </div>
 <div id='global'>
 
-## global.css + layout
+## CSS Global e Layout
+
+   O arquivo `globals.css` possui a estilização que estará presente em todas as páginas do site. Ele possui as variáveis `background` e `foreground` usadas para definir as cores da fonte e do fundo, além dos estilos definidos para o título e a fonte.
+
+```css
+:root {
+   --background: #f0f0f0;
+   --foreground: #1A1A24;
+}
+```
+```css
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+```
+
+   No arquivo `layout.tsx` são colocados os elementos que farão parte da estrutura de todas as páginas do site, como a fonte utilizada e os elementos fixos na tela, como os componentes `Sidebar` e `ToggleButton`. Os metadados como o título e descrição das páginas também estão presentes no layout.
+
+```tsx
+export default function RootLayout() {
+  return (
+    <html>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {children}
+        <Sidebar />
+        <ToggleButton />
+      </body>
+    </html>
+  );
+}
+```
 
 </div>
 <div id='page'>
 
-## page 
-// css + tsx
+## Tela Inicial
+
+   A tela inicial é composta pelos arquivos `page.tsx` e `page.module.css`. O arquivo `.tsx` tem como conteúdo o título, um menu de navegação para as páginas de Objetivos, Resultados-Chave e Iniciativas e um parágrafo de contextualização do site.
+
+```tsx
+export default function Home() {
+  return (
+    <div className={styles.container}>
+      <h1>Sistema Simplificado de Gestão de OKRs</h1>
+      <div className={styles.content}>
+        // Conteúdo da página
+      </div>
+    </div>
+  );
+}
+``` 
+
+   Já o arquivo CSS `.module.css` possui as classes de estilização dos elementos da página, além de suporte para modo claro e escuro.
+
+```css
+.menuButton {
+  padding: 10pt 20pt;
+  background-color: #e2732e;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+[data-theme="dark"] .menuButton {
+  background-color: #e37741;
+}
+```
 
 </div>
 
