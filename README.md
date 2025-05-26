@@ -5,13 +5,13 @@
     * [Exemplo do controller no Back-end](#back)
     * [Exemplo da requisição no Front-end](#front)
 * [Components](#components)
-* [Pagina de Consulta Exemplo ](#consulta)
-* [Pagina de Criação Exemplo ](#criacao)
-* [Pagina de Atualização Exemplo ](#atualizacao)
+* [Pagina de Consulta Objetivo Exemplo ](#consulta)
+* [Pagina de Criação Objetivo Exemplo ](#criacao)
+* [Pagina de Atualização Objetivo Exemplo ](#atualizacao)
 * [Iniciativas](#iniciativas)
 * [Resultados-Chave](#kr)
-* [global.css + layout](#global)
-* [page](#page)
+* [css global + layout](#global)
+* [Tela de início](#page)
 * [Autoras](#autoras)
 
 
